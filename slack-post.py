@@ -14,11 +14,9 @@ if os.path.exists("config.json"):
     config_json = json.load(open("config.json"))
     if 'slackWebhookUrl' in config_json.keys():
         webhook_url = config_json['slackWebhookUrl']
-        print("webhook_url = " + webhook_url)
 # Webhook URLを環境変数から読み込み
 if 'SLACK_WEBHOOK_URL' in os.environ.keys():
     webhook_url = os.environ['SLACK_WEBHOOK_URL']
-    print("webhook_url = " + webhook_url)
 # Webhook URLが指定されていない場合は終了
 if webhook_url is None:
     sys.stderr.writelines("please specify a valid webhook URL.(config.json or environment variable SLACK_WEBHOOK_URL)\n")

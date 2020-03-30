@@ -10,8 +10,9 @@ time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 webhook_url = None
 # config.jsonからWebhook URLを読み込み
-if os.path.exists("config.json"):
-    config_json = json.load(open("config.json"))
+config_file_path = os.path.dirname(os.path.realpath(__file__)) + "/config.json"
+if os.path.exists(config_file_path):
+    config_json = json.load(open(config_file_path))
     if 'slackWebhookUrl' in config_json.keys():
         webhook_url = config_json['slackWebhookUrl']
 # Webhook URLを環境変数から読み込み
